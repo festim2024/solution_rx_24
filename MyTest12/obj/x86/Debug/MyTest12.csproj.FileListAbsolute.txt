@@ -1,0 +1,12 @@
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\MyTest12.rxtmg
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\MyTest12.rxtst
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\MyTest12.exe.config
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\MyTest12.xml
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\MyTest12.exe
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\MyTest12.pdb
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\Ranorex.Core.Resolver.dll
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\obj\x86\Debug\MyTest12.csproj.AssemblyReference.cache
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\obj\x86\Debug\MyTest12.csproj.CoreCompileInputs.cache
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\obj\x86\Debug\MyTest12.csproj.CopyComplete
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\obj\x86\Debug\MyTest12.exe
+C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\obj\x86\Debug\MyTest12.pdb
