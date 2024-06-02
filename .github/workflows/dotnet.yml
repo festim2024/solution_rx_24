@@ -26,11 +26,5 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
        vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
-    - name: Build
-      run: msbuild MyTest12.sln
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        path: MyTest12/bin/Debug/Runtime
-    - name: Test
-      run: dotnet test --no-build --verbosity normal
+    - name: Run Ranorex Tests
+      run: C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\bin\Debug\MyTest12.exe /agent:MyAgent
