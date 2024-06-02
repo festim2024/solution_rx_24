@@ -16,38 +16,25 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+    - name: Setup .NET 6.x
+      uses: actions/setup-dotnet@v3
+      with:
+        # Semantic version range syntax or exact version of a dotnet version
+        dotnet-version: '6.x'
+    - name: Install dependencies
+      run: dotnet add package Newtonsoft.Json --version 12.0.1
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
       with:
        vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
     - name: Run Ranorex Tests
       run: msbuild MyTest12.sln
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.2
-      with:
-        path: MyTest12/bin/Debug/Runtime
-    - name: Test Reporter
-      uses: dorny/test-reporter@v1.9.1
-      with:
-        name: Report
-        path: MyTest12/bin/Debug/Reports
-        path-replace-backslashes:
-    # Format of test results. Supported options:- dart-json
-    - dotnet-trx
-    - flutter-json
-    - java-junit
-    - jest-junit
-    - mocha-json
-    - rspec-json
-    - swift-xunit
-       reporter: 
-    # Limits which test suites are listed. Supported options:
-  - all
+          
 
-
-   
+    
+    
+     
+ 
 
    
           
