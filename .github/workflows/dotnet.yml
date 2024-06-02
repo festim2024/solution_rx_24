@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: gh-runner-1
+    runs-on: label-1
 
     steps:
     - uses: actions/checkout@v4
