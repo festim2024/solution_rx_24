@@ -25,7 +25,7 @@ jobs:
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
       with:
-       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/MSBuild/Current/Bin'
+       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
     - name: Build
       run: msbuild MyTest12.sln
     - name: Upload a Build Artifact
