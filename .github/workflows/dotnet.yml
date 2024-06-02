@@ -27,4 +27,4 @@ jobs:
       with:
        vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
     - name: Run Ranorex Tests
-      run: msbuild 'C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12\MyTest12.proj'
+      run: msbuild 'C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12'
