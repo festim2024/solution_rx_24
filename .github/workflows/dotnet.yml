@@ -21,12 +21,9 @@ jobs:
       with:
            dotnet-version: | 
              3.1.x
-             5.0.x  
-    - name: Install Ranorex
-      run: |
-        choco install ranorex -y
+             5.0.x 
     - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v2
       with:
        vswhere-path: 'C:\Program Files (x86)\Microsoft Visual Studio\Installer'
     - name: Build
