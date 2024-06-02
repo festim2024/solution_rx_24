@@ -29,10 +29,9 @@ jobs:
       with:
         path: MyTest12/bin/Debug/Runtime
     - name: Test Reporter
-  # You may pin to the exact commit or the version.
-  # uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5
       uses: dorny/test-reporter@v1.9.1
       with:
+        name: Report
         path: 'C:/Users/festi/Documents/repo_rx_solution/solution_rx_24/MyTest12/bin/Debug/Runtime'
    
 
