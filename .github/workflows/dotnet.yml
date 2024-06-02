@@ -19,13 +19,17 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 5.0.x          
+        dotnet-version: 5.0.x   
+    - name: Install Ranorex
+      run: |
+        choco install ranorex -y
+        choco install ranorex-agent -y
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
       with:
        vswhere-path: 'C:\Program Files (x86)\Microsoft Visual Studio\Installer'
     - name: Build
-      run: msbuild "C:/Program Files (x86)/Ranorex/Studio/Bin/RanorexStudio.exe" MyTest12.sln
+      run: msbuild MyTest12.sln
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2.2.2
       with:
