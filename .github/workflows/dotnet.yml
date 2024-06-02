@@ -23,7 +23,6 @@ jobs:
     - name: Install Ranorex
       run: |
         choco install ranorex -y
-        choco install ranorex-agent -y
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
       with:
