@@ -32,7 +32,21 @@ jobs:
       uses: dorny/test-reporter@v1.9.1
       with:
         name: Report
-        path: 'C:/Users/festi/Documents/repo_rx_solution/solution_rx_24/MyTest12/bin/Debug/Runtime'
+        path: MyTest12/bin/Debug/Reports
+        path-replace-backslashes:
+    # Format of test results. Supported options:- dart-json
+    - dotnet-trx
+    - flutter-json
+    - java-junit
+    - jest-junit
+    - mocha-json
+    - rspec-json
+    - swift-xunit
+       reporter: 
+    # Limits which test suites are listed. Supported options:
+  - all
+
+
    
 
    
