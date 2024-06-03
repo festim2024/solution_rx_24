@@ -21,8 +21,6 @@ jobs:
         run: dotnet restore
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
-        with:
-           dotnet-version: 5.0.x
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.0.0
       - name: setup-msbuild
@@ -31,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore MyTest12.sln
       - name: Build
-        run: dotnet build MyTest12.sln
+        run: msbuild MyTest12.sln
       - name: Test with the dotnet CLI
         run: dotnet test MyTest12.sln
     
