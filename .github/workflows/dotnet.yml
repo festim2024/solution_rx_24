@@ -18,11 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
        
-
       - run: dotnet restore MyTest12
 
       - run: dotnet build MyTest12 -c Release --no-restore
