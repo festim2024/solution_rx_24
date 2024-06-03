@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: dotnet restore Microsoft.Build.Utilities.Core
+        run: dotnet restore
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
       - name: setup-msbuild
