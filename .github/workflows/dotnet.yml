@@ -22,7 +22,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-           dotnet-version: 8.0.x
+           dotnet-version: 5.0.x
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4.0.0
       - name: setup-msbuild
