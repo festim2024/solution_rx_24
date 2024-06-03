@@ -11,9 +11,9 @@ on:
 jobs:
   build_and_test:
 
-    #env:
-      #BUILD_CONFIG: 'Release'
-      #SOLUTION: 'MyTest12.sln'
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'MyTest12.sln'
 
     runs-on: self-hosted
 
@@ -25,13 +25,13 @@ jobs:
 
 
     - name: Restore dependencies
-      run: dotnet restore MyTest12.sln
+      run: dotnet restore $SOLUTION
 
    # - name: Build
    #   run: dotnet build $SOLUTION
       
     - name: Test
-      run: dotnet test MyTest12/MyTest12.csproj --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
+      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
       
     - name: Dotnet Test Reporter
       uses: bibipkins/dotnet-test-reporter@v1.4.1
