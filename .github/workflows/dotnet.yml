@@ -13,7 +13,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12/MyTest12.csproj'
+      SOLUTION: 'MyTest12'
 
     runs-on: self-hosted
 
