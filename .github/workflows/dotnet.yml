@@ -21,11 +21,11 @@ jobs:
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
        
-      - run: dotnet restore MyTest12
+      - run: dotnet restore MyTest12.sln
 
-      - run: dotnet build MyTest12 -c Release --no-restore
+      - run: dotnet build MyTest12.sln -c Release --no-restore
 
-      - run: dotnet publish MyTest12 -c Release --self-contained -r win-arm64
+      - run: dotnet publish MyTest12.sln -c Release --self-contained -r win-arm64
     
     
      
