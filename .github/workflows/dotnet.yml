@@ -26,7 +26,7 @@ jobs:
        
       - run: dotnet restore MyTest12.sln
 
-      - run: dotnet build MyTest12.sln -c Release --no-restore
+      - run: dotnet build MyTest12.sln
 
       - run: dotnet publish MyTest12.sln -c Release --self-contained -r win-arm64
     
