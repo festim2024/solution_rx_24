@@ -24,11 +24,11 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
-      - run: dotnet restore ${{"C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12"}}
+      - run: dotnet restore ${{MyTest12}}
 
-      - run: dotnet build ${{ "C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12" }} -c Release --no-restore
+      - run: dotnet build ${{MyTest12}} -c Release --no-restore
 
-      - run: dotnet publish ${{ "C:\Users\festi\Documents\Ranorex\RanorexStudio Projects\MyTest12\MyTest12" }} -c Release --self-contained -r win-arm64
+      - run: dotnet publish ${{MyTest12 }} -c Release --self-contained -r win-arm64
     
     
      
