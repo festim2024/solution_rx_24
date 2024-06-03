@@ -17,9 +17,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4.0.0
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v2
-
 
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
@@ -28,7 +33,7 @@ jobs:
 
       - run: dotnet build MyTest12.sln
 
-      - run: dotnet publish MyTest12.sln -c Release --self-contained -r win-arm64
+      - run: dotnet publish MyTest12.sln
     
     
      
