@@ -15,7 +15,7 @@ jobs:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'MyTest12.sln'
 
-    runs-on: label-5
+    runs-on: label-10
 
     steps:
     - uses: actions/checkout@v2
