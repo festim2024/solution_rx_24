@@ -40,7 +40,7 @@ jobs:
       if: always()
       with:
         name: DotNET Tests
-        path: "**/test-results.trx"                            
+        path: "MyTest12/bin/Debug/Reports/test-results.trx"                            
         reporter: dotnet-trx
         fail-on-error: true
      
