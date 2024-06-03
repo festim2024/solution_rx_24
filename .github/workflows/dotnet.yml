@@ -13,7 +13,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12/MyTest12'
+      SOLUTION: 'MyTest12.sln'
 
     runs-on: self-hosted
 
@@ -28,7 +28,7 @@ jobs:
       run: dotnet restore $SOLUTION
 
    # - name: Build
-   #   run: msbuild $SOLUTION
+   #   run: dotnet build $SOLUTION
       
     - name: Test
       run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
