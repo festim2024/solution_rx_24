@@ -25,9 +25,6 @@ jobs:
         uses: actions/setup-dotnet@v4.0.0
       - name: setup-msbuild
         uses: microsoft/setup-msbuild@v2
-
-      - name: Install .NET Core
-        uses: actions/setup-dotnet@v4
        
       - name: Install dependencies
         run: dotnet restore MyTest12.sln
