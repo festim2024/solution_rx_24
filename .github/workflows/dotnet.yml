@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: dotnet restore
+        run: dotnet restore Microsoft.Build.Utilities.Core -Version 17.10.4
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
       - name: setup-msbuild
@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: dotnet restore MyTest12.sln
       - name: Build
-        run: msbuild MyTest12.sln
+        run: dotnet build MyTest12.sln
       - name: Test with the dotnet CLI
         run: dotnet test MyTest12.sln
     
