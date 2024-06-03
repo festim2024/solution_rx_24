@@ -11,9 +11,9 @@ on:
 jobs:
   build_and_test:
 
-    env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12.sln'
+    #env:
+      #BUILD_CONFIG: 'Release'
+      #SOLUTION: 'MyTest12.sln'
 
     runs-on: self-hosted
 
@@ -25,7 +25,7 @@ jobs:
 
 
     - name: Restore dependencies
-      run: dotnet restore $SOLUTION
+      run: dotnet restore MyTest12.sln
 
    # - name: Build
    #   run: dotnet build $SOLUTION
