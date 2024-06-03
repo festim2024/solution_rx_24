@@ -29,9 +29,12 @@ jobs:
       - name: Install .NET Core
         uses: actions/setup-dotnet@v4
        
-      - run: dotnet restore MyTest12.sln
-
-      - run: dotnet publish MyTest12.sln
+      - name: Install dependencies
+        run: dotnet restore MyTest12.sln
+      - name: Build
+        run: dotnet build MyTest12.sln
+      - name: Test with the dotnet CLI
+        run: dotnet test MyTest12.sln
     
     
      
