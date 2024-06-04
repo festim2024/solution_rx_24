@@ -9,9 +9,9 @@ on:
 jobs:
   build_and_test:
 
-    env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12.sln'
+   # env:
+   #   BUILD_CONFIG: 'Release'
+    #  SOLUTION: 'MyTest12.sln'
 
     runs-on: self-hosted
 
@@ -21,6 +21,9 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4.0.0
+
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v4.0.0
 
