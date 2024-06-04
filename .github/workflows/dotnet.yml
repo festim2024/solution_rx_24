@@ -24,8 +24,6 @@ jobs:
         uses: microsoft/setup-msbuild@v2
       - name: Setup NuGet.exe for use with actions
         uses: NuGet/setup-nuget@v2.0.0
-      - name: Restore Packages
-        run: nuget restore MyTest12.sln
       - name: Build solution
         run: msbuild MyTest12.sln -t:rebuild -property:Configuration=Release
       - name: Test with the dotnet CLI
