@@ -22,7 +22,9 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
-       with:dotnet-version:5.0.x
+      with:
+        # Semantic version range syntax or exact version of a dotnet version
+        dotnet-version: '5.x'
 
 
     - name: Restore dependencies
