@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies  
         run: dotnet restore MyTest12.sln  
       - name: Build  
-        run: dotnet build MyTest12.sln  
+        run: dotnet msbuild MyTest12.sln  
       - name: Test with the dotnet CLI  
         run: dotnet test MyTest12.sln
    
