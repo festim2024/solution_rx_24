@@ -1,3 +1,4 @@
+
 name: .NET
 
 on:
@@ -12,24 +13,17 @@ jobs:
     runs-on: label-1
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        run: dotnet restore
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v4.0.0
-      - name: setup-msbuild
-        uses: microsoft/setup-msbuild@v2
-      - name: Setup NuGet.exe for use with actions
-        uses: NuGet/setup-nuget@v2.0.0
-      - name: Build solution
-        run: msbuild MyTest12.sln -t:rebuild -property:Configuration=Release
-      - name: Test with the dotnet CLI
-        run: dotnet test MyTest12.sln
-     
- 
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4.0.0
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
+      with:
+       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
+    - name: Run Ranorex Tests
+      run: msbuild MyTest12.sln
 
    
           
