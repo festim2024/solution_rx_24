@@ -37,7 +37,7 @@ jobs:
       run: msbuild MyTest12.sln
 
     - name: Run Unit Tests
-      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults/*.trx
+      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:MyTest12/Reports/*.trx
 
    # - name: Test
     #  run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
@@ -47,7 +47,7 @@ jobs:
       if: always()
       with:
         name: DotNET Tests
-        path: ./TestResults/*.trx                       
+        path: MyTest12/Reports/*.trx                       
         reporter: dotnet-trx
         fail-on-error: true
 
