@@ -39,14 +39,21 @@ jobs:
     - name: Run Unit Tests
       run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./Reports
 
-    - name: Dotnet Test Reporter
- 
-      uses: bibipkins/dotnet-test-reporter@v1.4.1
+    - name: dotnet-tests-report
+  # You may pin to the exact commit or the version.
+  # uses: zyborg/dotnet-tests-report@ce730c068bb73480dcb37c02d40890bf8b44c953
+      uses: zyborg/dotnet-tests-report@v1.4.4
       with:
-        github-token:
-         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
-        results-path: 
-         ./Reports
+       test_results_path: ./Reports
+
+   # - name: Dotnet Test Reporter
+ 
+   #   uses: bibipkins/dotnet-test-reporter@v1.4.1
+   #   with:
+    #    github-token:
+      #   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
+      #  results-path: 
+       #  ./Reports
       
 
 
