@@ -30,9 +30,6 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
 
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1
-
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
       with:
