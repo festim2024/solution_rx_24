@@ -36,11 +36,11 @@ jobs:
     - name: Run Ranorex Tests
       run: msbuild MyTest12.sln
 
-   # - name: Run Unit Tests
-    #  run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults/*.trx
+    - name: Run Unit Tests
+      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults/*.trx
 
-    - name: Test
-      run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
+   # - name: Test
+    #  run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
       
     - name: Test Report
       uses: dorny/test-reporter@v1
