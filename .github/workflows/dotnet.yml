@@ -33,8 +33,13 @@ jobs:
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1
 
-    - name: Build app for release
-      run: msbuild $SOLUTION
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
+      with:
+       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
+    - name: Run Ranorex Tests
+      run: msbuild MyTest12.sln
+
       
     - name: Test
       run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
