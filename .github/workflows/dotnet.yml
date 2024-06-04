@@ -20,12 +20,17 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v2
-      with:
-        # Semantic version range syntax or exact version of a dotnet version
-        dotnet-version: '6.x'
+  #  - name: Setup .NET
+  #    uses: actions/setup-dotnet@v2
+  #    with:
+   #     # Semantic version range syntax or exact version of a dotnet version
+   #     dotnet-version: '6.x'
 
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4.0.0
 
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
