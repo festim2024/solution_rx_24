@@ -37,7 +37,8 @@ jobs:
       run: msbuild MyTest12.sln
 
     - name: Run Unit Tests
-      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:MyTest12/Reports/*.trx
+      run: dotnet test MyTest12.sln "trx;LogFileName=test-results.trx"
+     # run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:MyTest12/Reports/*.trx
 
     - name: Archive bundle
       uses: actions/upload-artifact@v2
@@ -46,14 +47,7 @@ jobs:
         path: MyTest12/Reports
         if-no-files-found: error
 
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: success() || failure()    # run this step even if previous step failed
-      with:
-        name: JEST Tests            # Name of the check run which will be created
-        path: MyTest12/jest-*.xml    # Path to test results
-        reporter: jest-junit    
-
+ 
    # - name: Test
     #  run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
       
