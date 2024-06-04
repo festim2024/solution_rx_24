@@ -34,7 +34,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Build app for release
-      run: msbuild MyTest12.csproj cmake --build build --target ALL_BUILD --config Release
+      run: msbuild MyTest12.csproj --target ALL_BUILD --config Release
       
     - name: Test
       run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
