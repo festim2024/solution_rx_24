@@ -36,10 +36,9 @@ jobs:
     - name: Run Ranorex Tests
       run: msbuild MyTest12.sln
 
-    - name: Test
-      run: dotnet test MyTest12.sln
+    - name: Run Unit Tests
+      run: dotnet test --no-build --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
       
-    - name: Dotnet Test Reporter
-      uses: bibipkins/dotnet-test-reporter@v1.4.1
+
 
           
