@@ -37,7 +37,7 @@ jobs:
       run: msbuild MyTest12.sln
 
     - name: Test
-      run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
+      run: dotnet test MyTest12.sln
       
     - name: Dotnet Test Reporter
       uses: bibipkins/dotnet-test-reporter@v1.4.1
