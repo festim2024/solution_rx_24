@@ -37,7 +37,7 @@ jobs:
       run: msbuild MyTest12.sln
 
     - name: Run Unit Tests
-      run: dotnet test --no-build --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
+      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
       
 
 
