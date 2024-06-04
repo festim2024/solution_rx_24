@@ -37,14 +37,14 @@ jobs:
       run: msbuild MyTest12.sln
 
     - name: Run Unit Tests
-      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:MyTest12/Reports
+      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:'C:/Users/festi/Documents/Ranorex/RanorexStudio Projects/MyTest12/MyTest12/bin/Debug/Reports'
 
     - name: dotnet-tests-report
   # You may pin to the exact commit or the version.
   # uses: zyborg/dotnet-tests-report@ce730c068bb73480dcb37c02d40890bf8b44c953
       uses: zyborg/dotnet-tests-report@v1.4.4
       with:
-       test_results_path: MyTest12/Reports
+       test_results_path: 'C:/Users/festi/Documents/Ranorex/RanorexStudio Projects/MyTest12/MyTest12/bin/Debug/Reports'
 
    # - name: Dotnet Test Reporter
  
