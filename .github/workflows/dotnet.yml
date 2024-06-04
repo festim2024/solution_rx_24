@@ -36,17 +36,20 @@ jobs:
     - name: Run Ranorex Tests
       run: msbuild MyTest12.sln
 
-    - name: Run Unit Tests
-      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults/*.trx
+   # - name: Run Unit Tests
+    #  run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults/*.trx
 
-    - name: Dotnet Test Reporter
-      uses: bibipkins/dotnet-test-reporter@v1.4.0
+    - name: Test
+      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
+      
+    - name: Test Report
+      uses: dorny/test-reporter@v1
+      if: always()
       with:
-       github-token: ${{ secrets.GITHUB_TOKEN }}
-       comment-title: 'Unit Test Results'
-       results-path: ./TestResults/*.trx
-       coverage-path: ./TestResults/coverage.xml
-       coverage-threshold: 80
+        name: DotNET Tests
+        path: "**/test-results.trx"                            
+        reporter: dotnet-trx
+        fail-on-error: true
 
    # - name: Dotnet Test Reporter
  
