@@ -42,13 +42,14 @@ jobs:
      # run: dotnet test MyTest12.sln --logger "trx;LogFileName=MyTest12/Reports/test-results.trx"
 
     - name: Restore dependencies
-      run: dotnet restore $SOLUTION
+      run: dotnet restore MyTest12.sln
+
 
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
+      run: dotnet build MyTest12.sln --configuration $BUILD_CONFIG
       
     - name: Test
-      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
+      run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
       
 
 
