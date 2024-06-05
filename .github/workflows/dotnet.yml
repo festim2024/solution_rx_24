@@ -31,11 +31,12 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
        msbuild-architecture: x64
+       
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
 
     - name: Build
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
+      run: msbuild $SOLUTION --configuration $BUILD_CONFIG
       
     - name: Test
       run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
