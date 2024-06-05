@@ -1,40 +1,30 @@
-name: CI
+name: dotnet package
 
-on:
-  push:
-    branches:
-    - main
-  pull_request:
-    branches:
-    - main
-    
+on: [push]
+
 jobs:
-  build_and_test:
-
-    env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12.sln'
+  build:
 
     runs-on: self-hosted
     strategy:
       matrix:
         dotnet-version: [ '3.1.x', '6.0.x' ]
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup dotnet ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-     
-
-      - name: Install dependencies
-        run: dotnet restore $SOLUTION
-      - name: Build
-        run: dotnet build $SOLUTION
-      - name: Test with the dotnet CLI
-        run: dotnet test $SOLUTION
-       
-  
-
-
+        - uses: actions/checkout@v4
+        - name: Setup dotnet
+          uses: actions/setup-dotnet@v3
+          with:
+            dotnet-version: ${{ matrix.dotnet-version }}
+        - name: Install dependencies
+          run: dotnet restore
+        - name: Test with dotnet
+          run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+        - name: Upload dotnet test results
+          uses: actions/upload-artifact@v4
+          with:
+            name: dotnet-results-${{ matrix.dotnet-version }}
+            path: TestResults-${{ matrix.dotnet-version }}
+          # Use always() to always run this step to publish test results when there are test failures
+          if: ${{ always() }}
           
