@@ -13,7 +13,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'Solution1/UnitTest.sln'
+      SOLUTION: 'MyTest12/UnitTest.csproj'
 
     runs-on: self-hosted
 
