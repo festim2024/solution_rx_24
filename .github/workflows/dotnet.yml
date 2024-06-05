@@ -15,7 +15,7 @@ jobs:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'MyTest12.sln'
 
-    runs-on: self-hosted
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v4
