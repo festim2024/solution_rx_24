@@ -33,7 +33,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
       with:
        msbuild-architecture: x64
-       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
+       #vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
 
     - name: Run Ranorex Tests
       run: msbuild MyTest12.sln
