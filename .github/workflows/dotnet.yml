@@ -19,7 +19,7 @@ jobs:
         - name: Install dependencies
           run: dotnet restore MyTest12.sln
         - name: Test with dotnet
-          run: dotnet test MyTest12.sln --logger "trx;LogFileName=test-results.trx" 
+          run: dotnet test MyTest12.sln --logger "trx;LogFileName="C:/Users/festi/Documents/report/test-results.trx" 
         - name: Upload dotnet test results
           uses: actions/upload-artifact@v4
           with:
