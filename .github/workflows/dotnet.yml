@@ -54,7 +54,7 @@ jobs:
    #   run: msbuild MyTest12.sln $BUILD_CONFIG
       
     - name: Build
-      run: dotnet build MyTest12.sln
+      run: msbuild MyTest12.sln
       
     - name: Test
       run: dotnet test MyTest12.sln --logger "trx;LogFileName=test-results.trx" || true
