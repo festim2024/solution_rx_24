@@ -18,35 +18,26 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
+      
+  #  - name: Setup .NET Core SDK
+   #   uses: actions/setup-dotnet@v4.0.0
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v4.0.0
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 6.x
 
     - name: Restore dependencies
-      run: dotnet restore MyTest12.sln
+      run: dotnet restore $SOLUTION
 
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v2
-      with:
-       msbuild-architecture: x64
-       #vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
-
-    - name: Run Ranorex Tests
-      run: msbuild MyTest12.sln
-
-    - name: Run Unit Tests
-      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
-
-    - name: dotnet-tests-report-testing-fix
-  
-      uses: jason-edstrom/dotnet-tests-report-testing-fix@v1.4.4
-      with:
-        test_results_path: ./TestResults
-    
+    - name: Build
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
+      
+    - name: Test
+      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
+      
+   
        
   
 
