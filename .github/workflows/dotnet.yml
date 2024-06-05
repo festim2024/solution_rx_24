@@ -32,7 +32,7 @@ jobs:
       run: dotnet restore $SOLUTION
 
     - name: Build
-      run: dotnet build $SOLUTION 
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
       
     - name: Test
       run: dotnet test $SOLUTION --configuration $BUILD_CONFIG
