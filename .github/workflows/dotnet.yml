@@ -17,9 +17,9 @@ jobs:
           with:
             dotnet-version: ${{ matrix.dotnet-version }}
         - name: Install dependencies
-          run: dotnet restore
+          run: dotnet restore MyTest12.sln
         - name: Test with dotnet
-          run: dotnet test --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
+          run: dotnet test MyTest12.sln --logger trx --results-directory "TestResults-${{ matrix.dotnet-version }}"
         - name: Upload dotnet test results
           uses: actions/upload-artifact@v4
           with:
