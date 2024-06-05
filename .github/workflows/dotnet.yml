@@ -1,68 +1,42 @@
-#this works as well
-
 name: CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+    - main
   pull_request:
-    branches: [ "main" ]
+    branches:
+    - main
     
 jobs:
-  build:
+  build_and_test:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12.sln'
+      SOLUTION: 'Solution1/UnitTest.sln'
 
     runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v2
-      
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v4.0.0
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.x
+
 
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
 
     - name: Build
-      run: dotnet build MyTest12.sln --configuration $BUILD_CONFIG
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
       
     - name: Test
-      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
-      
+      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG
    
        
   
-
- 
-   # - name: Test
-    #  run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
-      
-   # - name: Test Report
-   #   uses: dorny/test-reporter@v1
-   #   if: always()
-   #   with:
-     #   name: DotNET Tests
-     #   path: MyTest12/Reports/*.trx                       
-      #  reporter: dotnet-trx
-       # fail-on-error: true
-
-   # - name: Dotnet Test Reporter
- 
-   #   uses: bibipkins/dotnet-test-reporter@v1.4.1
-   #   with:
-    #    github-token:
-      #   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
-      #  results-path: 
-       #  ./Reports
-      
 
 
           
