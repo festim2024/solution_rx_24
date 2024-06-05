@@ -41,6 +41,12 @@ jobs:
     - name: Run Unit Tests
       run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
 
+    - name: dotnet-tests-report-testing-fix
+  
+      uses: jason-edstrom/dotnet-tests-report-testing-fix@v1.4.4
+      with:
+        test_results_path: ./TestResults
+    
        
   
 
