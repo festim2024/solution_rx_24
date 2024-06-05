@@ -39,7 +39,7 @@ jobs:
     - name: Run Unit Tests
       #run: dotnet test MyTest12.sln --logger:trx "LogFileName=test-results.trx"
      # run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:MyTest12/Reports/*.trx
-      run: dotnet test MyTest12.sln --logger "trx;LogFileName=MyTest12/test-results.trx"
+      run: dotnet test MyTest12.sln --logger "trx;LogFileName=MyTest12/Reports/test-results.trx"
 
     - name: Archive bundle
       uses: actions/upload-artifact@v2
