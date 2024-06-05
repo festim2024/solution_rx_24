@@ -59,7 +59,8 @@ jobs:
     
        path: MyTest12/Reports
     
-       reporter: -all
+       reporter: 
+         -all
   
 
  
