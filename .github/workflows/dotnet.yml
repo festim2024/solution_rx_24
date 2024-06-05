@@ -53,9 +53,12 @@ jobs:
     - name: Build
       run: msbuild MyTest12.sln $BUILD_CONFIG
       
+    - name: Build
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG
+      
     - name: Test
-      run: dotnet test MyTest12.sln --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx"
-
+      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
+      
     - name: Test Report
       uses: dorny/test-reporter@v1
       if: always()
@@ -64,6 +67,7 @@ jobs:
         path: "**/test-results.trx"                            
         reporter: dotnet-trx
         fail-on-error: true
+
       
 
 
