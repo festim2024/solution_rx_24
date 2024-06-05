@@ -57,17 +57,7 @@ jobs:
       run: msbuild MyTest12.sln
       
     - name: Test
-      run: dotnet test MyTest12.sln  --logger "trx;LogFileName=test-results.trx" || true
-      
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-        name: DotNET Tests
-        path: "**/test-results.trx"                            
-        reporter: dotnet-trx
-        fail-on-error: true
-
+      run: dotnet test MyTest12.sln
       
 
 
