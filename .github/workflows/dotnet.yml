@@ -27,11 +27,11 @@ jobs:
    # - name: Restore dependencies
    #   run: dotnet restore MyTest12.sln
 
-  #  - name: setup-msbuild
-  #    uses: microsoft/setup-msbuild@v2
-  #    with:
-  #     msbuild-architecture: x64
-    #   vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
+      with:
+       msbuild-architecture: x64
+       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
 
    # - name: Run Ranorex Tests
     #  run: msbuild MyTest12.sln
