@@ -58,9 +58,8 @@ jobs:
        name: check
     
        path: MyTest12/Reports
-    
-       reporter: 
-         -all
+
+       
   
 
  
