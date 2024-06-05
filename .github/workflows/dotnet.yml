@@ -22,12 +22,17 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
+
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v2
+      with:
+       msbuild-architecture: x64
   
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
 
     - name: Build
-      run: msbuild MyTest12.sln
+      run: dotnet build $SOLUTION 
       
     - name: Test
       run: dotnet test $SOLUTION --configuration $BUILD_CONFIG
