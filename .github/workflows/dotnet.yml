@@ -37,8 +37,8 @@ jobs:
       run: msbuild MyTest12.sln
 
     - name: Run Unit Tests
-      run: dotnet test MyTest12.sln --logger:trx "LogFileName=test-results.trx"
-     # run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:MyTest12/Reports/*.trx
+      #run: dotnet test MyTest12.sln --logger:trx "LogFileName=test-results.trx"
+      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:MyTest12/Reports/*.trx
 
     - name: Archive bundle
       uses: actions/upload-artifact@v2
@@ -46,6 +46,21 @@ jobs:
         name: bundle
         path: MyTest12/Reports
         if-no-files-found: error
+
+    - name: Test Reporter
+  # You may pin to the exact commit or the version.
+  # uses: dorny/test-reporter@31a54ee7ebcacc03a09ea97a7e5465a47b84aea5
+      uses: dorny/test-reporter@v1.9.1
+      with:
+    # Name or regex of artifact containing test results
+    
+    # Name of the check run
+       name: check
+    
+       path: MyTest12/Reports
+    
+       reporter: -all
+  
 
  
    # - name: Test
