@@ -1,51 +1,49 @@
-name: CI
+name: RxDemoAppRegression
 
-on:
+on: # This configuration will run this workflow on Push and Pull requests
   push:
-    branches:
-    - main
+    branches: [ "main" ]
   pull_request:
-    branches:
-    - main
-    
+    branches: [ "main" ]
+
 jobs:
-  build_and_test:
 
+  build:
+
+    strategy:
+      matrix:
+        configuration: [Debug]
+
+    runs-on: self-hosted
+    
+    # Configure environment variables
     env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12.sln'
-
-    runs-on: ubuntu-latest
-
+      Solution_Name: MyTest12.sln.sln # Replace with your solution name
+      Test_Project_Path: MyTest12.csproj # Replace with the path to your test project
+      
+    # Check out code from the repository
     steps:
-   
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
 
-    - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-
-    - name: Setup .NET Core SDK
-      uses: actions/setup-dotnet@v4.0.0
-
-    - name: setup-msbuild
+    # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
-      with:
-       msbuild-architecture: x64
-       
-    - name: Restore dependencies
-      run: dotnet restore $SOLUTION
 
-    - name: Build
-      run: msbuild $SOLUTION --configuration $BUILD_CONFIG
-      
-    - name: Test
-      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --logger "trx;LogFileName=test-results.trx" || true
-      
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-        name: DotNET Tests
-        path: "**/test-results.trx"                            
-        reporter: dotnet-trx
-        fail-on-error: true
+    # This step is not required for all solutions
+    # Restore the application to populate the obj folder with RuntimeIdentifiers
+    - name: Restore the application
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+      env:
+        Configuration: ${{ matrix.configuration }}
+
+    # Build the solution
+    - name: Build solution
+      run: msbuild $env:Solution_Name
+
+    # Run the solution, replacing RxDemoApp with the name of your solution
+    - name: Run the Test Suite
+      run: MyTest12/bin/Debug/MyTest12.exe
+
