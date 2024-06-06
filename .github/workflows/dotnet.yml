@@ -41,7 +41,7 @@ jobs:
 
     # Build the solution
     - name: Build solution
-      run: msbuild $env:Solution_Name
+      run: msbuild MyTest12.sln
 
     # Run the solution, replacing RxDemoApp with the name of your solution
     - name: Run the Test Suite
