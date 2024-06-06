@@ -19,7 +19,7 @@ jobs:
     # Configure environment variables
     env:
       Solution_Name: MyTest12.sln # Replace with your solution name
-      Test_Project_Path: MyTest12.csproj # Replace with the path to your test project
+      Test_Project_Path: MyTest12/MyTest12.csproj # Replace with the path to your test project
       
     # Check out code from the repository
     steps:
