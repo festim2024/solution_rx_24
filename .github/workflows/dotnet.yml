@@ -34,10 +34,10 @@ jobs:
 
     # This step is not required for all solutions
     # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Test_Project_Path /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+  #  - name: Restore the application
+   #   run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
+  #    env:
+      #  Configuration: ${{ matrix.configuration }}
 
     # Build the solution
     - name: Build solution
