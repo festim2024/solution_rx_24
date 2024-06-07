@@ -24,8 +24,8 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v4.0.0
 
-    - name: Restore dependencies
-      run: dotnet restore MyTest12.sln
+ #   - name: Restore dependencies
+ #     run: dotnet restore MyTest12.sln
 
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v2
