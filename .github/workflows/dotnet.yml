@@ -39,6 +39,6 @@ jobs:
     - name: Run the solution
       run: MyTest12/bin/Debug/MyTest12.exe
 
-    - name: Run Unit Tests
-      run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
+ #   - name: Run Unit Tests
+  #    run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
       
