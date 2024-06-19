@@ -1,41 +1,48 @@
-name: CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-    
-jobs:
-  build:
-
-    env:
-      BUILD_CONFIG: 'Release'
-      SOLUTION: 'MyTest12.sln'
-
-    runs-on: self-hosted
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      
-    - name: Restore dependencies
-      run: dotnet restore MyTest12.sln
-
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v2
-      with:
-       msbuild-architecture: x64
-       vswhere-path: 'C:/Program Files (x86)/Microsoft Visual Studio/Installer'
-
-    - name: Run Ranorex Tests
-      run: msbuild MyTest12.sln
-
-    - name: Run the solution
-      run: MyTest12/bin/Debug/MyTest12.exe
-
- #   - name: Run Unit Tests
-  #    run: dotnet test MyTest12.sln --configuration ${{env.BUILD_CONFIG}} --logger:trx --results-directory:./TestResults
-      
+name: RxDemoAppRegression # Choose a name that makes the most sense to you 
+ 
+on: # This setup will run the workflow on Push and Pull requests to the main code branch 
+  push: 
+    branches: [ "main" ] 
+  pull_request: 
+    branches: [ "main" ] 
+ 
+jobs: 
+ 
+  build: 
+ 
+    strategy: 
+      matrix: 
+        configuration: [Debug] 
+ 
+    runs-on: self-hosted # The Runner must be self-hosted 
+     
+    # Configure environment variables 
+    env: 
+      Solution_Name: MyTest12.rxsln # Replace with your solution name 
+      Test_Project_Path: MyTest12\MyTest12.csproj # Replace with the path to your test project 
+       
+    # Check out code from the repository 
+    steps: 
+    - name: Checkout 
+      uses: actions/checkout@v4 # At the time of writing, v4 is the latest 
+      with: 
+        fetch-depth: 0 
+ 
+    # Add MSBuild to the PATH: https://github.com/microsoft/setup-msbuild 
+    - name: Setup MSBuild.exe 
+      uses: microsoft/setup-msbuild@v2 # At the time of writing, v2 is the latest 
+ 
+    # This step is not required for all solutions 
+    # Restore the application to populate the obj folder with RuntimeIdentifiers 
+    - name: Restore the application 
+      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration 
+      env: 
+        Configuration: ${{ matrix.configuration }} 
+ 
+    # Build the solution 
+    - name: Build solution 
+      run: msbuild $env:Solution_Name 
+ 
+    # Run the solution, replacing RxDemoApp with the name of your solution 
+    - name: Run the Test Suite 
+      run: MyTest12/bin/Debug/MyTest12.exe 
