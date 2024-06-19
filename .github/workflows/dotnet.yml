@@ -35,7 +35,7 @@ jobs:
     # This step is not required for all solutions 
     # Restore the application to populate the obj folder with RuntimeIdentifiers 
     - name: Restore the application 
-      run: msbuild $env:Test_Project_Path /t:Restore /p:Configuration=$env:Configuration 
+      run: msbuild MyTest12.sln /t:Restore /p:Configuration=$env:Configuration 
       env: 
         Configuration: ${{ matrix.configuration }} 
  
